@@ -1,0 +1,3 @@
+#include "utilidad.h"
+
+//escribirRegEnArch

@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1699398016 source:c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\indice.c
+	"indice.h"
+
+1699398253 source:c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"indice.h"
+	"string.h"
+
+1699398955 c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\indice.h
+	"lista-enlazada.h"
+
+1699398828 c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\lista-enlazada.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1699398843 source:c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\lista-enlazada.c
+	"lista-enlazada.h"
+
+1699398406 source:c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\utilidad.c
+	"utilidad.h"
+
+1699398396 c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\utilidad.h
+
