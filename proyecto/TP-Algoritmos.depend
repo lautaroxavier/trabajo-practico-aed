@@ -24,3 +24,29 @@
 
 1699398396 c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\utilidad.h
 
+1699405307 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.c
+	"indice.h"
+
+1699401986 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.h
+	"lista-enlazada.h"
+
+1699401831 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1699406272 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.c
+	"lista-enlazada.h"
+
+1699402825 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.c
+	"utilidad.h"
+
+1699402823 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.h
+
+1699543310 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"indice.h"
+

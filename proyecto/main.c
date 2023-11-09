@@ -4,6 +4,9 @@
 #include <ctype.h>
 #include "indice.h"
 
+#define ARCH_BIN_SOCIOS "socios.dat"
+#define ARCH_INDICE "socios.idx"
+
 typedef struct
 {
     int dia;
@@ -26,6 +29,149 @@ typedef struct
     T_Fecha fecha_baja; // debe ser vacio si el estado es 'A'
 }
 T_Reg_Socio;
+
+int validar_categoria(char *categoria);
+
+int validar_socio(T_Reg_Socio *p_socio);
+
+void mostrar_socio(T_Reg_Socio *p_socio);
+
+void trozar_campos_socio(char *src, T_Reg_Socio *p_socio);
+
+int crear_arch_bin();
+
+void mostrar_menu();
+
+void verificar_arch_bin_socios();
+
+void dar_de_alta_socio(T_Indice *pIndice);
+
+void modificar_nombre_socio(T_Indice *pIndice);
+
+void dar_de_baja_socio(T_Indice *pIndice);
+
+void mostrar_inactivos(T_Indice *pIndice);
+
+void mostrar_socios_activos(T_Indice *pIndice);
+
+void mostrar_socios_atrasados(T_Indice *pIndice);
+
+void primera_parte();
+
+void segunda_parte();
+
+int main()
+{
+    primera_parte();
+    segunda_parte();
+    return 0;
+}
+
+void primera_parte()
+{
+    crear_arch_bin(); // convierte socios.txt a socios.dat
+    //  FALTA CREAR EL INDICE A PARTIR DE SOCIOS.DAT Y GUARDARLO EN UN ARCHIVO
+}
+
+void segunda_parte()
+{
+    // hay que cargar el indice a partir del archivo creado en la primera parte
+    char opcion;
+    T_Indice indice_socios_activos;
+    //indice_crear(&indice_socios_activos);
+    //indice_cargar(&indice_socios_activos, ARCH_INDICE);
+    do {
+        ///IMPLEMENTAR CLEAN SCREEN
+        mostrar_menu();
+        fflush(stdin);
+        scanf("%c", &opcion);
+        opcion = toupper(opcion);
+        switch (opcion)
+        {
+        case 'A':
+            dar_de_alta_socio(&indice_socios_activos);
+            break;
+        case 'M':
+            modificar_nombre_socio(&indice_socios_activos);
+            break;
+        case 'B':
+            dar_de_baja_socio(&indice_socios_activos);
+            break;
+        case 'L':
+            mostrar_inactivos(&indice_socios_activos);
+            break;
+        case 'V':
+            mostrar_socios_activos(&indice_socios_activos);
+            break;
+        case 'P':
+            mostrar_socios_atrasados(&indice_socios_activos);
+            break;
+        case 'S':
+            break;
+        default:
+            printf("Opcion Invalida\n");
+            break;
+        }
+    } while (opcion != 'S');
+    // hay que volver a guardar el indice en un archivo y liberar la memoria
+    //indice_grabar(&indice_socios_activos, ARCH_INDICE);
+    //indice_vaciar(&indice_socios_activos);
+}
+
+void dar_de_alta_socio(T_Indice *pIndice)
+{
+    // IMPLEMETAR!!!
+    // hay que cargar los datos del usuario en un registro de socio y validar los inputs necesarios
+    // hay que buscar que el nro de socio no exista en el indice
+    // si no esta en el indice, buscar que no este en el archivo como inactivo
+    // si no existe en el indice o el archivo, agregarlo al archivo y al indice
+    printf("Agregando nuevo socio...\n");
+}
+
+void modificar_nombre_socio(T_Indice *pIndice)
+{
+    // IMPLEMENTAR!!!
+    // pedir un numero de socio
+    // buscar el socio en el indice
+    // si lo encuentra, pedir el nombre nuevo (validar el largo)
+    // modificar el archivo con el nuevo nombre de socio y el indice
+    printf("Modificando nombre de socio...\n");
+}
+
+void dar_de_baja_socio(T_Indice *pIndice)
+{
+    // IMPLEMENTAR!!!!
+    // buscar el socio en el indice
+    // si no esta en el indice, buscarlo  secuencialmente en el archivo de socios como inactivo e informarlo
+    // si esta en el indice, modificar el registro en el archivo y sacarlo del indice
+    printf("Dando de baja a socio...\n");
+}
+
+void mostrar_inactivos(T_Indice *pIndice)
+{
+    // IMPLEMENTAR!!!
+    // buscar secuencialmente en el archivo los socios que esten inactivos
+    // e ir insertandolos ordenados por nro de socio en una lista
+    // mostrar la lista
+    printf("Mostrando socios inactivos...\n");
+}
+
+void mostrar_socios_activos(T_Indice *pIndice)
+{
+    // IMPLEMENTAR!!!
+    // recorrer el indice y mostrar los datos de cada socio
+    printf("Mostrando socios activos...\n");
+}
+
+void mostrar_socios_atrasados(T_Indice *pIndice)
+{
+    // IMPLEMENTAR!!!
+    // recorrer los socios activos usando el indice y buscandolos en el archivo
+    // insertar los socios en una lista ordenados por fecha de ultimo pago
+    // si la lista tiene mas de 10 elementos, eliminar el ultimo
+    // cuando se termina de recorrer el indice se muestran los 10 registros que quedaron en la lista
+    printf("Mostrando socios con cuota atrasada...\n");
+}
 
 int validar_categoria(char *categoria)
 {
@@ -164,12 +310,6 @@ void trozar_campos_socio(char *src, T_Reg_Socio *p_socio)
     *aux = '\0';
 }
 
-// convertir archivo de texto a binario
-// abrir archivo de texto
-// crear archivo binario
-// leer linea por linea y cargarlo en un registro
-// grabar registro en el archivo binario
-
 int crear_arch_bin()
 {
     const char *archivo_txt = "socios.txt";
@@ -216,35 +356,4 @@ void verificar_arch_bin_socios()
         mostrar_socio(&socio);
     }
     fclose(fp);
-}
-
-int main()
-{
-    char opcion;
-    // convertir archivo de texto de socios a binario
-    // crear indice y guardarlo en un archivo
-    // usar indice para realizar consultas
-    crear_arch_bin();
-    // verificar_arch_bin_socios();
-    // gestion de socios
-    do {
-        ///IMPLEMENTAR FFLUSH Y CLEAN SCREEN
-        mostrar_menu();
-        scanf("%c", &opcion);
-        opcion = toupper(opcion);
-//        switch
-
-//    printf("A - Dar de alta nuevo socio\n");
-//    printf("M - Modificar nombre y apellido\n");
-//    printf("B - Dar de baja a un socio\n");
-//    printf("L - Mostrar socios dados de baja\n");
-//    printf("V - Mostrar socios activos ordenados por nro de socio\n");
-//    printf("P - Mostrar los 10 socios con mayor atraso en la cuota\n");
-//    printf("S - Salir\n");
-
-
-    } while (opcion != 'S');
-
-
-    return 0;
 }
