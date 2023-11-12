@@ -50,3 +50,64 @@
 	<ctype.h>
 	"indice.h"
 
+1699745975 source:a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"indice.h"
+	"utilidad.h"
+
+1699742300 a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\indice.h
+	"lista-enlazada.h"
+	"utilidad.h"
+
+1699745432 a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\lista-enlazada.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1699742420 source:a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\lista-enlazada.c
+	"lista-enlazada.h"
+
+1699745432 source:a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\utilidad.c
+	"utilidad.h"
+
+1699744251 a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\utilidad.h
+	<stdio.h>
+	<stdlib.h>
+
+1699745395 source:a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\indice.c
+	"indice.h"
+
+1699762181 source:c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\indice.c
+	"indice.h"
+
+1699742300 c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\indice.h
+	"lista-enlazada.h"
+	"utilidad.h"
+
+1699745432 c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\lista-enlazada.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1699744251 c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\utilidad.h
+	<stdio.h>
+	<stdlib.h>
+
+1699751233 source:c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\lista-enlazada.c
+	"lista-enlazada.h"
+
+1699762583 source:c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"indice.h"
+	"utilidad.h"
+
+1699745432 source:c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\utilidad.c
+	"utilidad.h"
+

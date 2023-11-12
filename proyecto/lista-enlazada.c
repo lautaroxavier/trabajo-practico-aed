@@ -267,6 +267,36 @@ int eliminarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void 
     return 0;
 }
 
+int buscarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *, const void *))
+{
+    int comp;
+    // en una lista ordenada solo hay que buscar hasta que sea menor
+    while (*pLista && (comp = cmp(dato, (*pLista)->elem)) > 0)
+    {
+        pLista = &((*pLista)->sig);
+    }
+    // si no se encuentra el elemento
+    if (!(*pLista) || comp != 0)
+    {
+        return 0;
+    }
+    // para lista no ordenada
+    //while (*pLista && cmp(dato, (*pLista)->elem))
+    //{
+    //    pLista = &((*pLista)->sig);
+    //}
+    //if (!(*pLista))
+    //{
+    //    return 0;
+    //}
+    // se copia el dato porque el dato pasado por parametro puede estar incompleto
+    memcpy(dato, (*pLista)->elem, MIN(tam,(*pLista)->tam));
+    *pLista = (*pLista)->sig;
+    return 0;
+}
+
+
+
 void ordenarLista(tLista *pLista, int cmp(const void*, const void*))
 {
     // la estrategia es crear una nueva lista vacia e ir enganchando los nodos
@@ -297,11 +327,10 @@ void ordenarLista(tLista *pLista, int cmp(const void*, const void*))
 
 void mapLista(tLista *pLista, void accion(void *, void *), void *param)
 {
-
   while(*pLista)
   {
     accion((*pLista)->elem, param);
-    pLista = &(*pLista)->sig;
+    pLista = &((*pLista)->sig);
   }
 }
 

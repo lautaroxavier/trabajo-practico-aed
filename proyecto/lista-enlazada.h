@@ -45,6 +45,8 @@ int insertarOrdenado(tLista *pLista, const void *dato, size_t tam, int cmp (cons
 
 int eliminarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *, const void *));
 
+int buscarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *, const void *));
+
 void ordenarLista(tLista *pLista, int cmp(const void*, const void*));
 
 void mapLista(tLista *pLista, void accion(void *, void *), void *param);

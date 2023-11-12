@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 #include <ctype.h>
 #include "indice.h"
+#include "utilidad.h"
 
 #define ARCH_BIN_SOCIOS "socios.dat"
 #define ARCH_INDICE "socios.idx"
@@ -29,6 +31,11 @@ typedef struct
     T_Fecha fecha_baja; // debe ser vacio si el estado es 'A'
 }
 T_Reg_Socio;
+
+void clrscr()
+{
+    system("@cls||clear");
+}
 
 int validar_categoria(char *categoria);
 
@@ -60,17 +67,55 @@ void primera_parte();
 
 void segunda_parte();
 
+int indice_asignar(T_Indice *p_indice, const char *path);
+
 int main()
 {
-    primera_parte();
+    //primera_parte();
     segunda_parte();
     return 0;
+}
+
+int indice_asignar(T_Indice *p_indice, const char *path)
+{
+    // crea el indice a partir del archivo de socios
+    // el indice solo debe contener los socios activos
+    FILE* fp = fopen(path, "rb");
+    unsigned reg = 0;
+    T_Reg_Socio socio_tmp;
+    if(!fp)
+    {
+        return ERROR;
+    }
+    while(fread(&socio_tmp, sizeof(T_Reg_Socio), 1, fp))
+    {
+        if(socio_tmp.estado == 'A')
+        {
+            indice_insertar(p_indice, &(socio_tmp.nro_socio), reg);
+            //printf("nro socio: %li registro: %u\n", socio_tmp.nro_socio, reg);
+        }
+        reg++;
+    }
+    fclose(fp);
+
+    return OK;
+}
+
+void mostrarClaveYReg(const void *clave, unsigned reg, void *s)
+{
+    printf("%li %u \n", *((long*)clave), reg);
 }
 
 void primera_parte()
 {
     crear_arch_bin(); // convierte socios.txt a socios.dat
-    //  FALTA CREAR EL INDICE A PARTIR DE SOCIOS.DAT Y GUARDARLO EN UN ARCHIVO
+    //verificar_arch_bin_socios();
+    T_Indice indice;
+    indice_crear(&indice, sizeof(long), Compare_Long);
+    indice_asignar(&indice,ARCH_BIN_SOCIOS);
+    //indice_recorrer(&indice, mostrarClaveYReg, stdout);
+    indice_grabar(&indice, ARCH_INDICE);
+    indice_vaciar(&indice);
 }
 
 void segunda_parte()
@@ -78,14 +123,15 @@ void segunda_parte()
     // hay que cargar el indice a partir del archivo creado en la primera parte
     char opcion;
     T_Indice indice_socios_activos;
-    //indice_crear(&indice_socios_activos);
-    //indice_cargar(&indice_socios_activos, ARCH_INDICE);
+    indice_crear(&indice_socios_activos, sizeof(long), Compare_Long);
+    indice_cargar(&indice_socios_activos, ARCH_INDICE);
+    //indice_recorrer(&indice_socios_activos, mostrarClaveYReg, stdout);
     do {
-        ///IMPLEMENTAR CLEAN SCREEN
         mostrar_menu();
         fflush(stdin);
         scanf("%c", &opcion);
         opcion = toupper(opcion);
+        //clrscr();
         switch (opcion)
         {
         case 'A':
@@ -114,8 +160,8 @@ void segunda_parte()
         }
     } while (opcion != 'S');
     // hay que volver a guardar el indice en un archivo y liberar la memoria
-    //indice_grabar(&indice_socios_activos, ARCH_INDICE);
-    //indice_vaciar(&indice_socios_activos);
+    indice_grabar(&indice_socios_activos, ARCH_INDICE);
+    indice_vaciar(&indice_socios_activos);
 }
 
 void dar_de_alta_socio(T_Indice *pIndice)
@@ -315,8 +361,8 @@ int crear_arch_bin()
     const char *archivo_txt = "socios.txt";
     char buffer[1000];
     T_Reg_Socio socio;
-    FILE *p_arch_txt = fopen(archivo_txt, "r");
-    FILE *p_arch_bin = fopen("socios.dat", "w");
+    FILE *p_arch_txt = fopen(archivo_txt, "rt");
+    FILE *p_arch_bin = fopen("socios.dat", "wb");
     while(fgets(buffer, 1000, p_arch_txt))
     {
         trozar_campos_socio(buffer, &socio);
@@ -328,6 +374,7 @@ int crear_arch_bin()
             fclose(p_arch_txt);
             return 0;
         }
+        //mostrar_socio(&socio);
         fwrite(&socio, sizeof(T_Reg_Socio), 1, p_arch_bin);
     }
     fclose(p_arch_bin);
@@ -348,7 +395,7 @@ void mostrar_menu()
 
 void verificar_arch_bin_socios()
 {
-    FILE *fp = fopen("socios.dat", "r");
+    FILE *fp = fopen("socios.dat", "rb");
     T_Reg_Socio socio;
     printf("LEYENDO socios.dat\n");
     while(fread(&socio, sizeof(T_Reg_Socio), 1, fp))

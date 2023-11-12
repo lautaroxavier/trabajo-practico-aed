@@ -2,8 +2,12 @@
 #define INDICE_H_INCLUDED
 
 #include "lista-enlazada.h"
+#include "utilidad.h"
+
 #define OK 1
 #define ERROR 0
+
+
 typedef struct
 {
     size_t tam_clave;
@@ -24,11 +28,15 @@ int indice_eliminar(T_Indice *p_indice, void *p_clave, unsigned *p_nro_reg);
 // busca la clave y devuelve el nro de registro
 int indice_buscar(T_Indice *p_indice, void *p_clave, unsigned *p_nro_reg);
 
+// graba un archivo con el contenido del indice
+int indice_grabar(T_Indice *p_indice, const char *path);
+
+void escribirRegEnArch(void* Orig, void* f);
+
 // carga el indice a partir del archivo ordenado
 int indice_cargar(T_Indice *p_indice, const char *path);
 
-// graba un archivo con el contenido del indice
-int indice_grabar(T_Indice *p_indice, const char *path);
+void leerRegDeArch(void* Orig, void* f);
 
 // vacia el indice
 void indice_vaciar(T_Indice *p_indice);
