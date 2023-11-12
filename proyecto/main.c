@@ -71,7 +71,7 @@ int indice_asignar(T_Indice *p_indice, const char *path);
 
 int main()
 {
-    //primera_parte();
+    primera_parte();
     segunda_parte();
     return 0;
 }
