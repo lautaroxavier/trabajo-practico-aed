@@ -108,4 +108,8 @@ void ordenar_socios_atrasados(const void *, unsigned, void *);
 
 void mostrar_socio2(void *, void *);
 
+int validar_fecha(T_Fecha*);
+
+int es_bisiesto(int anio);
+
 #endif // MAIN_H_INCLUDED

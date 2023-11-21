@@ -488,16 +488,23 @@ void pedir_categoria(char *s)
 
 void pedir_fecha(T_Fecha *p_fecha, char *s)
 {
-    printf("%s", s);
-    printf("Ingrese dia: ");
-    fflush(stdin);
-    scanf("%d", &(p_fecha->dia));
-    printf("Ingrese mes: ");
-    fflush(stdin);
-    scanf("%d", &(p_fecha->mes));
-    printf("Ingrese anio: ");
-    fflush(stdin);
-    scanf("%d", &(p_fecha->anio));
+    do
+    {
+        printf("%s\n", s);
+        // anio
+        printf("Ingrese anio: ");
+        fflush(stdin);
+        scanf("%d", &(p_fecha->anio));
+        // mes
+        printf("Ingrese mes: ");
+        fflush(stdin);
+        scanf("%d", &(p_fecha->mes));
+        // dia
+        printf("Ingrese dia: ");
+        fflush(stdin);
+        scanf("%d", &(p_fecha->dia));
+    }
+    while(!validar_fecha(p_fecha));
 }
 
 void leer_nesimo_reg_arch(const void *p_clave, unsigned nro_reg, void *pf)
@@ -557,4 +564,28 @@ void presioneParaContinuar()
     printf("Presione Enter para continuar...\n");
     fflush(stdin);
     getchar();
+}
+
+int validar_fecha(T_Fecha *fecha)
+{
+    int dias[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int diasbis[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (fecha->anio < 1900)
+    {
+        return 0;
+    }
+    if (fecha->mes < 1 || fecha->mes > 12)
+    {
+        return 0;
+    }
+    if (!es_bisiesto(fecha->anio))
+    {
+        return (fecha->dia >= 1) && (fecha->dia <= dias[fecha->mes - 1]);
+    }
+    return (fecha->dia) >= 1 && (fecha->dia <= diasbis[fecha->mes - 1]);
+}
+
+int es_bisiesto(int anio)
+{
+    return (anio % 4 == 0) && (anio % 100 != 0);
 }
