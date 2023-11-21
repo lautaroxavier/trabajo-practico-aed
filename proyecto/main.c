@@ -45,7 +45,7 @@ void primera_parte()
     T_Indice indice;
     indice_crear(&indice, sizeof(long), Compare_Long);
     indice_asignar(&indice,ARCH_BIN_SOCIOS);
-    indice_recorrer(&indice, mostrarClaveYReg, stdout);
+    //indice_recorrer(&indice, mostrarClaveYReg, stdout);
     indice_grabar(&indice, ARCH_INDICE);
     indice_vaciar(&indice);
 }
@@ -245,7 +245,7 @@ int validar_categoria(char *categoria)
     };
     for (int i = 0; i < 6; i++)
     {
-        if (strcmp(categoria, categorias[i]) == 0)
+        if (strcmpi(categoria, categorias[i]) == 0)
         {
             return 1;
         }
