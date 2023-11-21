@@ -3,7 +3,7 @@
 // EJECUTAR LA PRIMERA PARTE UNA SOLA VEZ AL PRINCIPIO
 int main()
 {
-    //primera_parte();
+    primera_parte();
     //verificar_arch_bin_socios();
     segunda_parte();
     return 0;
@@ -188,15 +188,19 @@ void dar_de_baja_socio(T_Indice *pIndice, FILE *p_arch)
 void mostrar_inactivos(T_Indice *pIndice, FILE *p_arch)
 {
     T_Reg_Socio socio_tmp;
+    tLista socios_inactivos;
+    crearLista(&socios_inactivos);
     printf("MOSTRANDO SOCIOS INACTIVOS...\n");
     fseek(p_arch, 0L, SEEK_SET);
     while(fread(&socio_tmp, sizeof(T_Reg_Socio), 1, p_arch))
     {
         if(socio_tmp.estado == 'I')
         {
-            mostrar_socio(&socio_tmp);
+            insertarOrdenado(&socios_inactivos, &socio_tmp, sizeof(T_Reg_Socio), cmp_socio);
         }
     }
+    mapLista(&socios_inactivos, mostrar_socio2, NULL);
+    vaciarLista(&socios_inactivos);
 }
 
 void mostrar_socios_activos(T_Indice *pIndice, FILE *p_arch)
@@ -588,4 +592,11 @@ int validar_fecha(T_Fecha *fecha)
 int es_bisiesto(int anio)
 {
     return (anio % 4 == 0) && (anio % 100 != 0);
+}
+
+int cmp_socio(const void *socio1, const void *socio2)
+{
+    T_Reg_Socio *s1 = (T_Reg_Socio*)socio1;
+    T_Reg_Socio *s2 = (T_Reg_Socio*)socio2;
+    return s1->nro_socio - s2->nro_socio;
 }

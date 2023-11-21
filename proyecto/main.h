@@ -112,4 +112,6 @@ int validar_fecha(T_Fecha*);
 
 int es_bisiesto(int anio);
 
+int cmp_socio(const void *, const void *);
+
 #endif // MAIN_H_INCLUDED
