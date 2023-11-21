@@ -1,5 +1,6 @@
 #include "main.h"
 
+// EJECUTAR LA PRIMERA PARTE UNA SOLA VEZ AL PRINCIPIO
 int main()
 {
     //primera_parte();
