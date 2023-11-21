@@ -235,6 +235,35 @@ int insertarOrdenado(tLista *pLista, const void *dato, size_t tam, int cmp (cons
     return 1;
 }
 
+int insertarOrdenadoConDuplicado(tLista *pLista, const void *dato, size_t tam, int cmp (const void*, const void*))
+{
+    // la lista debe estar ordenada
+    while(*pLista && cmp(dato, (*pLista)->elem) > 0)
+    {
+        pLista = &((*pLista)->sig);
+    }
+    // crear nodo
+    tNodo *nuevo = malloc(sizeof(tNodo));
+    if (!nuevo)
+    {
+        return 0;
+    }
+    nuevo->elem = malloc(tam);
+    if (!nuevo->elem)
+    {
+        free(nuevo);
+        return 0;
+    }
+    // asignar valores al nuevo nodo
+    nuevo->tam = tam;
+    nuevo->sig = *pLista;
+    memcpy(nuevo->elem, dato, tam);
+    // enganchar al ultimo nodo
+    *pLista = nuevo;
+
+    return 1;
+}
+
 int eliminarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *, const void *))
 {
     int comp;
@@ -264,7 +293,7 @@ int eliminarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void 
     memcpy(dato, eliminado->elem, MIN(tam, eliminado->tam));
     free(eliminado->elem);
     free(eliminado);
-    return 0;
+    return 1;
 }
 
 int buscarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *, const void *))
@@ -291,8 +320,7 @@ int buscarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *,
     //}
     // se copia el dato porque el dato pasado por parametro puede estar incompleto
     memcpy(dato, (*pLista)->elem, MIN(tam,(*pLista)->tam));
-    *pLista = (*pLista)->sig;
-    return 0;
+    return 1;
 }
 
 
@@ -327,10 +355,9 @@ void ordenarLista(tLista *pLista, int cmp(const void*, const void*))
 
 void mapLista(tLista *pLista, void accion(void *, void *), void *param)
 {
-  while(*pLista)
-  {
-    accion((*pLista)->elem, param);
-    pLista = &((*pLista)->sig);
-  }
+    while(*pLista)
+    {
+        accion((*pLista)->elem, param);
+        pLista = &((*pLista)->sig);
+    }
 }
-

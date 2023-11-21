@@ -1,8 +1,10 @@
+#ifndef TP_SOCIOS_CLUB_LISTA_ENLAZADA_H
+#define TP_SOCIOS_CLUB_LISTA_ENLAZADA_H
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-//
 #define MIN(x, y) ((x) < (y)) ? x : y
 
 typedef struct sNodo
@@ -11,7 +13,7 @@ typedef struct sNodo
     void *elem;
     struct sNodo *sig;
 }
-tNodo;
+        tNodo;
 
 typedef tNodo* tLista;
 
@@ -50,3 +52,7 @@ int buscarElemento(tLista *pLista, void *dato, size_t tam, int cmp(const void *,
 void ordenarLista(tLista *pLista, int cmp(const void*, const void*));
 
 void mapLista(tLista *pLista, void accion(void *, void *), void *param);
+
+int insertarOrdenadoConDuplicado(tLista *pLista, const void *dato, size_t tam, int cmp (const void*, const void*));
+
+#endif //TP_SOCIOS_CLUB_LISTA_ENLAZADA_H

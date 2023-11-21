@@ -24,36 +24,29 @@
 
 1699398396 c:\users\laboratorios.unlmlab\desktop\tp algoritmos\tp-algoritmos\utilidad.h
 
-1699762181 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.c
+1700524762 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.c
 	"indice.h"
 
-1699742300 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.h
+1700524744 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\indice.h
 	"lista-enlazada.h"
-	"utilidad.h"
 
-1699745432 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.h
+1700524696 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1699751233 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.c
+1700524716 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\lista-enlazada.c
 	"lista-enlazada.h"
 
-1699745432 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.c
+1700267705 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.c
 	"utilidad.h"
 
-1699744251 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.h
+1700267721 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\utilidad.h
 	<stdio.h>
 	<stdlib.h>
 
-1699763263 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<conio.h>
-	<ctype.h>
-	"indice.h"
-	"utilidad.h"
+1700524862 source:c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\main.c
+	"main.h"
 
 1699745975 source:a:\descargas\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\main.c
 	<stdio.h>
@@ -115,4 +108,12 @@
 
 1699745432 source:c:\users\lauta\downloads\trabajo-practico-aed-main(1)\trabajo-practico-aed-main\trabajo-practico-aed-main\proyecto\utilidad.c
 	"utilidad.h"
+
+1700524661 c:\users\lauta\onedrive\documentos\github\trabajo-practico-aed\proyecto\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"indice.h"
 

@@ -35,10 +35,13 @@ int indice_eliminar(T_Indice *p_indice, void *p_clave, unsigned *p_nro_reg)
         return ERROR;
     memcpy(info, p_clave, p_indice->tam_clave);
 
-    eliminarElemento(&(p_indice->indice), info, (p_indice->tam_clave)+sizeof(unsigned), p_indice->cmp);
+    if(!eliminarElemento(&(p_indice->indice), info, (p_indice->tam_clave)+sizeof(unsigned), p_indice->cmp))
+    {
+        return ERROR;
+    }
     memcpy(p_nro_reg, info+p_indice->tam_clave, sizeof(unsigned));
-
     free(info);
+
     return OK;
 }
 // busca la clave y devuelve el nro de registro
@@ -48,12 +51,14 @@ int indice_buscar(T_Indice *p_indice, void *p_clave, unsigned *p_nro_reg)
     if(!info)
         return ERROR;
     memcpy(info, p_clave, p_indice->tam_clave);
-
-    buscarElemento(&(p_indice->indice), info, (p_indice->tam_clave)+sizeof(unsigned), p_indice->cmp);
-
+    if(!buscarElemento(&(p_indice->indice), info, (p_indice->tam_clave) + sizeof(unsigned), p_indice->cmp))
+    {
+        free(info);
+        return 0;
+    }
     memcpy(p_nro_reg, info+p_indice->tam_clave, sizeof(unsigned));
-
     free(info);
+
     return OK;
 }
 

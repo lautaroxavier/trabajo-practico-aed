@@ -1,8 +1,7 @@
-#ifndef INDICE_H_INCLUDED
-#define INDICE_H_INCLUDED
+#ifndef TP_SOCIOS_CLUB_INDICE_H
+#define TP_SOCIOS_CLUB_INDICE_H
 
 #include "lista-enlazada.h"
-#include "utilidad.h"
 
 #define OK 1
 #define ERROR 0
@@ -14,7 +13,7 @@ typedef struct
     tLista indice;
     int (*cmp)(const void*, const void*);
 }
-T_Indice;
+        T_Indice;
 
 // crea un indice que alberga una clave del tamanio especificado y una funcion para ordenar segun las claves
 void indice_crear(T_Indice *p_indice, size_t tam_clave, int cmp(const void*, const void*));
@@ -44,4 +43,5 @@ void indice_vaciar(T_Indice *p_indice);
 // recorre el indice en orden y ejecuta la accion en cada elemento
 int indice_recorrer(T_Indice *p_indice, void accion(const void*, unsigned, void *), void *param);
 
-#endif // INDICE_H_INCLUDED
+#endif //TP_SOCIOS_CLUB_INDICE_H
+
