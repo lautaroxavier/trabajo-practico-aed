@@ -165,10 +165,6 @@ void modificar_nombre_socio(T_Indice *pIndice, FILE *p_arch)
 
 void dar_de_baja_socio(T_Indice *pIndice, FILE *p_arch)
 {
-    // IMPLEMENTAR!!!!
-    // buscar el socio en el indice
-    // si no esta en el indice, buscarlo  secuencialmente en el archivo de socios como inactivo e informarlo
-    // si esta en el indice, modificar el registro en el archivo y sacarlo del indice
     T_Reg_Socio socio_reg;
     unsigned nro_reg = -1;
     printf("Ingrese el numero de socio: ");
@@ -190,10 +186,6 @@ void dar_de_baja_socio(T_Indice *pIndice, FILE *p_arch)
 
 void mostrar_inactivos(T_Indice *pIndice, FILE *p_arch)
 {
-    // IMPLEMENTAR!!!
-    // buscar secuencialmente en el archivo los socios que esten inactivos
-    // e ir insertandolos ordenados por nro de socio en una lista
-    // mostrar la lista
     T_Reg_Socio socio_tmp;
     printf("MOSTRANDO SOCIOS INACTIVOS...\n");
     fseek(p_arch, 0L, SEEK_SET);
@@ -208,19 +200,12 @@ void mostrar_inactivos(T_Indice *pIndice, FILE *p_arch)
 
 void mostrar_socios_activos(T_Indice *pIndice, FILE *p_arch)
 {
-    // IMPLEMENTAR!!!
-    // recorrer el indice y mostrar los datos de cada socio
     printf("MOSTRANDO SOCIOS ACTIVOS...\n");
     indice_recorrer(pIndice, leer_nesimo_reg_arch, p_arch);
 }
 
 void mostrar_socios_atrasados(T_Indice *pIndice, FILE *p_arch)
 {
-    // IMPLEMENTAR!!!
-    // recorrer los socios activos usando el indice y buscandolos en el archivo
-    // insertar los socios en una lista ordenados por fecha de ultimo pago
-    // si la lista tiene mas de 10 elementos, eliminar el ultimo
-    // cuando se termina de recorrer el indice se muestran los 10 registros que quedaron en la lista
     tLista socios_atrasados;
     params_atrasados params;
     params.fp = p_arch;
